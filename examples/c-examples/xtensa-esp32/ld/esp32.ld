@@ -15,7 +15,7 @@ MEMORY
   /* TODO: Use human-readable lengths */
   /* TODO: Use the full memory map - this is just a test */
   iram_seg ( RX )       : ORIGIN = 0x40080400, len = 0xFC00
-  dram_seg ( RW )       : ORIGIN = 0x3FFF0000, len = 0x100A8
+  dram_seg ( RW )       : ORIGIN = 0x3FFF0000, len = 0x10120
 }
 
 /* Define output sections */

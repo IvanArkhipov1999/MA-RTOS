@@ -17,7 +17,7 @@ cfg_if::cfg_if! {
 }
 
 /// Operating system task manager.
-/// By default [cooperative::CooperativeTaskManager] is used
+/// By default, [cooperative::CooperativeTaskManager] is used
 static mut TASK_MANAGER: TaskManager = TaskManager::new();
 
 pub trait TaskManagerTrait {

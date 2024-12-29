@@ -1,0 +1,19 @@
+[package]
+name = "example_risc_v_esp32c6_cooperative_scheduler"
+version = "0.3.0"
+edition = "2021"
+
+[profile.release]
+debug = true
+
+[dependencies]
+# Specifying Martos version
+#martos = "0.3.0"
+# Specifying current Martos version path for ci
+martos = { path = "../../../../../", features = ["cooperative"] }
+esp-hal = "0.21.1"
+esp-backtrace = { version = "0.14.1", features = ["esp32c6", "panic-handler", "exception-handler", "println"] }
+esp-println = { version = "0.11.0", features = ["esp32c6"] }
+
+[features]
+default = ["esp-hal/esp32c6", "esp-backtrace/esp32c6", "esp-println/esp32c6"]

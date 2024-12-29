@@ -1,0 +1,13 @@
+[build]
+rustflags = [
+    "-C", "link-arg=-Ttext=0x80010000",
+    "-C", "link-arg=-emain",
+]
+
+target = "mips64el-unknown-linux-gnuabi64"
+
+[unstable]
+build-std = ["core", "alloc"]
+
+[target.mips64el-unknown-linux-gnuabi64]
+linker = "lld"

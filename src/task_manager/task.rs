@@ -20,6 +20,7 @@ pub type TaskStopConditionFunctionType = extern "C" fn() -> bool;
 
 #[repr(C)]
 /// Task representation for task manager.
+#[derive(Clone)]
 pub struct Task {
     /// Setup function, that is called once at the beginning of task.
     pub(crate) setup_fn: TaskSetupFunctionType,

@@ -1,5 +1,5 @@
 [package]
-name = "example_xtensa_esp32_scheduler"
+name = "example_xtensa_esp32_cooperative_scheduler"
 version = "0.3.0"
 edition = "2021"
 
@@ -10,7 +10,7 @@ debug = true
 # Specifying Martos version
 #martos = "0.3.0"
 # Specifying current Martos version path for ci
-martos = { path = "../../../../", features = ["preemptive"]}
+martos = { path = "../../../../../", features = ["cooperative"] }
 esp-hal = "0.21.1"
 esp-backtrace = { version = "0.14.1", features = ["esp32", "panic-handler", "exception-handler", "println"] }
 esp-println = { version = "0.11.0", features = ["esp32"] }

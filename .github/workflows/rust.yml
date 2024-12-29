@@ -2,7 +2,7 @@ name: Martos ci workflow
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "sync/preemp" ]
   pull_request:
     branches: [ "main" ]
 

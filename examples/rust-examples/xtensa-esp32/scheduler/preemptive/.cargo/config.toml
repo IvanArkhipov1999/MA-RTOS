@@ -1,0 +1,13 @@
+[build]
+rustflags = [
+    "-C", "link-arg=-Tlinkall.x",
+    "-C", "link-arg=-nostartfiles",
+]
+
+target = "xtensa-esp32-none-elf"
+
+[unstable]
+build-std = ["core", "alloc"]
+
+[target.'cfg(any(target_arch = "riscv32", target_arch = "xtensa"))']
+runner = "espflash flash --monitor"
