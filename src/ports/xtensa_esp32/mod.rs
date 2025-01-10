@@ -6,6 +6,8 @@ pub mod network;
 mod preempt;
 
 use crate::ports::PortTrait;
+use esp_hal::gpio::Io;
+use esp_hal::peripherals::UART2;
 #[cfg(feature = "network")]
 use esp_wifi::esp_now::EspNow;
 
@@ -51,6 +53,16 @@ impl PortTrait for XtensaEsp32 {
 
     fn init_heap() {
         memory_manager::init_heap();
+    }
+
+    #[cfg(target_arch = "xtensa")]
+    fn get_uart2() -> UART2 {
+        hardware_timer::get_uart2()
+    }
+
+    #[cfg(target_arch = "xtensa")]
+    fn get_io() -> Io {
+        hardware_timer::get_io()
     }
 
     #[cfg(feature = "network")]

@@ -1,7 +1,7 @@
 use core::sync::atomic::{AtomicBool, Ordering};
 use core::time::Duration;
 use esp_hal::timer::timg::{Timer, Timer0, TimerGroup};
-use esp_hal::{peripherals::*, prelude::*};
+use esp_hal::{gpio::*, peripherals::*, prelude::*};
 
 // TODO: initialize peripherals in separate mod
 pub static mut TIMER00: Option<Timer<Timer0<TIMG0>, esp_hal::Blocking>> = None;
@@ -9,6 +9,8 @@ pub static mut TIMER10: Option<Timer<Timer0<TIMG1>, esp_hal::Blocking>> = None;
 pub static mut PERIFERALS_RNG: Option<RNG> = None;
 pub static mut PERIFERALS_RADIO_CLK: Option<RADIO_CLK> = None;
 pub static mut PERIFERALS_WIFI: Option<WIFI> = None;
+pub static mut PERIFERALS_UART2: Option<UART2> = None;
+pub static mut IO: Option<Io> = None;
 
 static TIMER_BUSY: AtomicBool = AtomicBool::new(false);
 
@@ -27,6 +29,10 @@ pub fn setup_hardware_timer() {
         PERIFERALS_RNG = Some(peripherals.RNG);
         PERIFERALS_RADIO_CLK = Some(peripherals.RADIO_CLK);
         PERIFERALS_WIFI = Some(peripherals.WIFI);
+        PERIFERALS_UART2 = Some(peripherals.UART2);
+
+        let io = Io::new(peripherals.GPIO, peripherals.IO_MUX);
+        IO = Some(io);
     }
 }
 
@@ -60,4 +66,20 @@ pub fn get_time() -> Duration {
 /// Esp32 release hardware timer.
 pub fn release_hardware_timer() {
     TIMER_BUSY.store(false, Ordering::Release);
+}
+
+// TODO: Should not be here
+/// Esp32 uart2.
+pub fn get_uart2() -> UART2 {
+    unsafe {
+        return PERIFERALS_UART2.take().expect("Uart2 error");
+    }
+}
+
+// TODO: Should not be here
+/// Esp32 io.
+pub fn get_io() -> Io {
+    unsafe {
+        return IO.take().expect("Io error");
+    }
 }
