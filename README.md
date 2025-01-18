@@ -2,6 +2,7 @@
 ![Martos ci workflow](https://github.com/IvanArkhipov1999/Martos/actions/workflows/rust.yml/badge.svg)
 [![Version](https://img.shields.io/crates/v/martos.svg)](https://crates.io/crates/martos)
 [![Release](https://img.shields.io/github/v/release/IvanArkhipov1999/Martos)](https://github.com/IvanArkhipov1999/Martos/releases)
+[![codecov](https://codecov.io/gh/Azernem/Martos/branch/main/graph/badge.svg?token=SLIHSUWHT2)](https://codecov.io/gh/Azernem/Martos)
 
 Martos is an elegant real-time operating system designed for creating complex multi-agent systems. 
 Developers have the flexibility to write software for Martos using either Rust (preferred) or C languages.
